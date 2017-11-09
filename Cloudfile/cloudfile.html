@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloudfile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style>
+        a, a:hover {
+            text-decoration: none;
+        }
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            color: grey;
+        }
+
+        .left {
+            height: 1000px;
+            background: #EFF4F8;
+        }
+
+        ul li {
+            cursor: pointer;
+        }
+
+        ul.list-group {
+            margin-top: 1rem;
+        }
+
+        .list-group-item:nth-child(2) {
+            padding-left: 3.5rem;
+        }
+
+        .list-group-item:nth-child(3) {
+            padding-left: 3.5rem;
+
+        }
+
+        .list-group-item:nth-child(4) {
+            padding-left: 3.5rem;
+        }
+
+        .list-group-item:nth-child(5) {
+            padding-left: 3.5rem;
+        }
+
+        .list-group-item:nth-child(6) {
+            padding-left: 3.5rem;
+        }
+
+        .list-group-item:nth-child(7) {
+            padding-left: 3.5rem;
+        }
+
+        .list-group-item.active {
+            color: #3b8cff;
+            background-color: #E3E8EB;
+            border-color: #E3E8EB;
+        }
+
+        .list-group-item {
+            background-color: #EFF4F8;
+            border: none;
+        }
+
+        ul li:hover {
+            background: #E3E8EB;
+        }
+
+        .right-header {
+            position: relative;
+            margin-top: 1.3rem;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .right-header > button {
+            cursor: pointer;
+            width: 8rem;
+            margin-left: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .right-header > button.btn-default {
+            color: #4D96FF;
+            background-color: #fff;
+            border: 1px solid #c0d9fe;
+        }
+
+        .right-header > button.btn-default:hover {
+            color: #77Afff;
+        }
+
+        .all {
+            margin-top: 20px;
+            height: 500px;
+            border: 1px solid blue;
+        }
+        .photo, .doc, .video, .music, .zip, .other {
+            margin-top: 20px;
+            height: 500px;
+            border: 1px solid red;
+            display: none;
+        }
+        
+        /*图片*/
+		.photo{
+			/*border:1px solid red;*/
+			margin:1rem;
+			padding-left: .2rem;
+			display: none;
+			
+		}
+		.photo img{
+			width:12%;
+			margin:0.2rem 0.05rem;
+		}
+		.photo .show{
+			position:fixed;
+			top:0;
+			left:0;
+			z-index: 2;
+			width:100%;
+			height:100%;
+			background: rgba(0,0,0,0.7);
+			display: none;
+		}
+		.photo .show .pre{
+			position:absolute;
+			top:45%;
+			left:2rem;
+			font-size: 4rem;
+		}
+		.photo .show .next{
+			position:absolute;
+			top:45%;
+			right:2rem;
+			font-size: 4rem;
+		}
+		.photo .show .close{
+			position:absolute;
+			top:2%;
+			right:2rem;
+			font-size: 3rem;
+			color: white;
+		}
+		.photo .show .bigimg{
+			position:absolute;
+			margin:auto;
+			top:0;right:0;bottom:0;left:0;
+			width:50rem;
+		}
+
+/*视频*/
+         video{
+             display: none;
+             margin:auto;
+             position: absolute;
+             top:0;
+             left: 0;
+             right:0;
+             bottom: 0;
+             width:700px;
+             height:500px;
+         }
+        .mengban{
+            position: fixed;
+            z-index: 2;
+            top:0;
+            left:0;
+            width:100%;
+            height: 100%;
+            background:rgba(0,0,0,0.7);
+            display: none;
+        }
+        .close{
+            margin-top: 10px;
+            margin-right: 20px;
+            font-size: 40px;
+            color: white;
+        }
+
+        #files{
+            position: absolute;
+            left: 1em;
+            top:0em;
+            width: 8rem;
+            height: 2rem;
+            opacity: 0;
+            /*cursor: pointer;*/
+        }
+        /*音频*/
+        .audio-container{
+            line-height: 40px;
+        }
+        .audio-container span{
+            cursor: pointer;
+        }
+        .audio-container img{
+            width: 20px;
+            height: 20px;
+        }
+        .audio-container .play img{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2  col-md-3 col-sm-3 col-xl-2 col-4 left">
+            <ul class="list-group">
+                <li class="active list-group-item"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;全部文件</li>
+                <li class="list-group-item"><i class="fa fa-image"></i>&nbsp;&nbsp;图片</li>
+                <li class="list-group-item"><i class="fa fa-folder-o"></i>&nbsp;&nbsp;文档</li>
+                <li class="list-group-item"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;视频</li>
+                <li class="list-group-item"><i class="fa fa-music"></i>&nbsp;&nbsp;音乐</li>
+                <li class="list-group-item"><i class="fa fa-th-list"></i>&nbsp;&nbsp;压缩包</li>
+                <li class="list-group-item"><i class="fa fa-code"></i>&nbsp;&nbsp;其他</li>
+            </ul>
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-9 col-xl-10  col-8 border-black">
+            <div class="right-header">
+                <button type="button" class="btn btn-primary"><i class="fa fa-upload"></i> 上传</button>
+                <input type="file" id="files" />
+                <button type="button" class="btn btn-default"><i class="fa fa-download"></i> 下载</button>
+                <button type="button" class="btn btn-default"><i class="fa fa-share-square-o"></i> 分享</button>
+            </div>
+            <div class="d1 all">全部</div>
+            <div class="d1 photo">
+            	<div id="smImg">
+					<!--<p>第一天</p>-->
+					<img src="img/img1.jpg"/>
+					<img src="img/img2.jpg"/>
+					<img src="img/img8.jpg"/>
+					<img src="img/img1.jpg"/>
+					<img src="img/img2.jpg"/>
+					<img src="img/img3.jpg"/>
+					<img src="img/img4.jpg"/>
+					<img src="img/img5.jpg"/>
+					<img src="img/img6.jpg"/>
+					<img src="img/img7.jpg"/>
+					<img src="img/img10.jpg"/>
+					<img src="img/img11.jpg"/>
+					<img src="img/img10.jpg"/>
+					<img src="img/img12.jpg"/>
+					<img src="img/img13.jpg"/>
+					<img src="img/img14.jpg"/>
+					<img src="img/img4.jpg"/>
+					<img src="img/img6.jpg"/>
+				</div>
+				<div class="show">
+					<a href="#" class='pre'><i class="fa fa-chevron-circle-left"></i></a>
+					<a href="#" class='next'><i class="fa fa-chevron-circle-right"></i></a>
+					<a href="#" class='close'><i class="fa fa-window-close"></i></a>
+					<img class='bigimg' src=""/>
+				</div>
+            </div>
+            <div class="d1 doc">文档</div>
+            <div class="d1 video">
+                <div><a href="#" id="vdname">movie.mp4</a>
+                </div>
+                <div class="mengban">
+                    <a href="#" class="close"><i class="fa fa-window-close"></i></a>
+                    <video src="video/movie.mp4" controls="controls" id="vd">您的浏览器不支持 video 标签。</video>
+                </div>
+            </div>
+            <div class="d1 music">
+                <div class="row audio-container">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5">
+                        <audio src="music/Bigbang%20-%20Bad%20Boy.mp3"class="audios"></audio>
+                        <span class="audio-name">bad boy</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
+                        <!--<span class="play">-->
+                        <img src="img/play.png" alt="">
+                        <img src="img/stop.png" alt="">
+                        <!--</span>-->
+                    </div>
+                </div>
+            </div>
+            <div class="d1 zip">压缩包</div>
+            <div class="d1 other">其他</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var test;
+        $(".list-group li").click(function () {
+            $(".list-group li").removeClass('active');
+            $(this).addClass('active');
+            act = $(this).index();
+            console.log(act);
+            $('.d1').css('display', 'none');
+            switch(act){
+                case 0:
+                    $('.all').css('display', 'block');
+                    break;
+                case 1:
+                    $('.photo').css('display', 'block');
+                    break;
+                case 2:
+                    $('.doc').css('display', 'block');
+                    break;
+                case 3:
+                    $('.video').css('display', 'block');
+                    break;
+                case 4:
+                    $('.music').css('display', 'block');
+                    break;
+                case 5:
+                    $('.zip').css('display', 'block');
+                    break;
+                case 6:
+                    $('.other').css('display', 'block');
+                    break;
+            }
+        });
+//      图片
+		var preIndex;
+		
+		$('.list-group-item:eq(1)').on('click',function(){
+			$('.photo').css('display','block');
+		});
+		
+		$('#smImg img').on('click',function(){
+			var path=$(this)[0].src;
+//				console.log(path);
+			$('.show').css('display','block');
+			$('.bigimg').attr('src',path);
+			preIndex=$(this).index();
+			console.log(preIndex);
+		});
+	
+		$('.pre').on('click',function(){
+			if(preIndex<=0){
+				alert('抱歉，已经没有更多了！')
+			}else{
+				preIndex= --preIndex;
+//				console.log(preIndex);
+				var Src=$("img:eq("+preIndex+")")[0].src;
+				$('.bigimg').attr('src',Src);
+			}
+		});
+		
+		$('.next').on('click',function(){
+			var imgLength=$('#smImg img').length;
+			if(preIndex>=imgLength-1){
+				alert('抱歉，已经是最后一张了！')
+			}else{
+				preIndex= ++preIndex;
+				console.log(preIndex);
+				var Src=$("img:eq("+preIndex+")")[0].src;
+				$('.bigimg').attr('src',Src);
+			}
+		});
+		
+		$('.show .close').on('click',function(){
+			$('.show').css('display','none');
+		});
+
+//      视频
+        $('#vdname').on('click',function () {
+            $('.mengban').css('display','block');
+            $('#vd').css('display','block');
+            $('#vdname').css('display','none');
+        })
+        $('.close').on('click',function () {
+            $('.mengban').css('display','none');
+            $('#vd').css('display','none');
+            $('#vdname').css('display','block');
+        })
+    });
+    var fl = $("#files");
+    var jsonArr = [];
+    fl.on("change",function (event) {
+        var box = $("#box");
+        var files = event.target.files;
+        var fileJson = {};
+        var date = new Date();
+        var dateStr = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+
+            date.getDate()+"  "+date.getHours()+":"+
+            date.getMinutes()+":"+date.getSeconds();
+        fileJson.name = this.files[0].name;
+        fileJson.type = judgeType(files);
+        fileJson.uploader = "";
+        fileJson.uploadtime = dateStr;
+        fileJson.state = 0;
+        fileJson.readonly = true;
+        fileJson.Dmum = 0;
+//            box.html("<p>文件名："+fileJson.name+"</p>" +
+//                "<p>文件类型："+fileJson.type+"</p>" +
+//                "<p>上传者:"+fileJson.uploader+"</p>" +
+//                "<p>上传时间："+fileJson.uploadtime+"</p>" +
+//                "<p>状态:"+fileJson.state+"</p>" +
+//                "<p>只读："+fileJson.readonly+"</p>" +
+//                "<p>下载量："+fileJson.Dmum+"</p>");
+        console.log(fileJson);
+        jsonArr.push(fileJson);
+        console.log(jsonArr);
+    });
+
+    var flag = true;
+    $(".play img:eq(0)").on("click",function () {
+        if(flag==true){
+            $(".play img:eq(0)")[0].src = "img/pause.png";
+            $(".audios")[0].play();
+            flag=false;
+            return;
+        }
+        if(flag == false){
+            $(".play img:eq(0)")[0].src = "img/play.png";
+            $(".audios")[0].pause();
+            flag=true;
+            return;
+        }
+    })
+    $(".play img:eq(1)").on("click",function () {
+        $(".audios")[0].pause();
+        $(".audios")[0].currentTime = 0;
+        $(".play img:eq(0)")[0].src = "img/play.png";
+        flag=true;
+    });
+    function judgeType(files) {
+        var name = files[0].name;
+        var suffix = name.split(".")[1];
+        console.log(suffix)
+        if(files[0].type.indexOf("image/")!==-1){
+            return "image";
+        }else if(suffix == "mp4" || suffix == "avi" || suffix == "rmvb" || suffix == "ts"){
+            return "video";
+        }
+        else if(suffix == "docx" || suffix == "doc"){
+            return "document";
+        }else if(suffix.toLowerCase() == "mp3"){
+            return "audio";
+        }else if(suffix == "zip"){
+            return "zip";
+        }else{
+            return "other";
+        }
+    }
+</script>
+</body>
+</html>
