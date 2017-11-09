@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <style>
+        a{
+            cursor: pointer;
+        }
+        .modal-body img{
+            width: 20%;
+            margin: 2%;
+            border:1px solid lightgrey;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.5s linear;
+        }
+        .modal-body img:hover{
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+     <div class="box">
+         <img src="tx/1.jpg" alt="" id="img1">
+     </div>
+     <a href="#" data-toggle="modal" data-target="#login">修改头像</a>
+     <div class="modal" id="login">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <button class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">选择你喜欢的头像</h4>
+                 </div>
+                 <div class="modal-body">
+                     <img src="tx/1.jpg" alt="">
+                     <img src="tx/2.jpg" alt="">
+                     <img src="tx/3.jpg" alt="">
+                     <img src="tx/4.jpg" alt="">
+                     <img src="tx/5.jpg" alt="">
+                     <img src="tx/6.jpg" alt="">
+                     <img src="tx/7.jpg" alt="">
+                     <img src="tx/8.jpg" alt="">
+                 </div>
+                 <div class="modal-footer">
+                     <button class="btn btn-success" id="changeHD">确定</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <script src="jquery/jquery-1.8.3.min.js"></script>
+     <script type="text/javascript">
+         $(function (){
+             $(".modal-body img").on("click",function (){
+                 $(this).css({
+                     opacity: "1"
+                 });
+                 $(this).siblings().css({
+                     opacity: "0.3"
+                 });
+                 var newSrc = $(this).attr("src");
+                 $(".box img").attr("src",newSrc);
+                 setCookie("src",$("#img1").attr("src"),5);
+             });
+             $("#changeHD").on("click",function (){
+                 $(".modal").modal('hide');
+//                 $(".modal").css({
+//                     display:"none"
+//                 });
+//                 $(".modal-backdrop").hide().removeClass("in");
+//                 $(".modal-backdrop").css({
+//                     display:"none"
+//                 });
+             });
+
+             if(getCookie("src")){
+                 $(".box img").attr("src",getCookie("src"));
+             }
+
+
+             function setCookie(key,value,time){
+                 var oDate = new Date();
+                 oDate.setDate(oDate.getDate()+time);
+                 document.cookie=key+"="+encodeURI(value)+";expires="+oDate.toGMTString();
+             }
+//              获得cookie
+             function getCookie(key){
+                 var arr1 = document.cookie.split("; ");
+                 for(var i=0;i<arr1.length;i++){
+                     var arr2 = arr1[i].split("=");
+                     if(arr2[0]==key){
+                         return decodeURI(arr2[1]);
+                     }
+                 }
+             }
+         })
+     </script>
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script>
+    window.onload = function(){
+    //---文档加载完调用getRem()
+        getRem(1420,100)      
+	 /*720代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是
+	      为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/
+    };
+    window.onresize = function(){
+    //---窗口或框架被调整大小发生变化
+        getRem(1420,100)
+    };
+    function getRem(pwidth,prem){
+    	//---pwidth---UI图的宽度
+    	//---prem--自己设置的换算比例
+    	//获取html元素
+        var html = document.getElementsByTagName("html")[0];
+        //屏幕的宽度（兼容处理）
+        var ScreenWidth = document.body.clientWidth || document.documentElement.clientWidth;
+        html.style.fontSize = ScreenWidth/pwidth*prem + "px";
+    }
+</script>
+</body>
+</html>
