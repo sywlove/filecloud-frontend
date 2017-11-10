@@ -1,8 +1,39 @@
+//---localStorage
+var LFile = window.localStorage.getItem("file");
+var Ftype =JSON.parse(LFile).type;
+if(Ftype=="video"){
+    $("section#video").css("display","block");
+    $("section#video div#title1 div:nth-child(2)").children("h4").html(JSON.parse(LFile).name);
+    $("section#video div#title1 div:nth-child(4)").children("h4").html(JSON.parse(LFile).upuser);
+    $("section#video div#title1 div:nth-child(5)").children("h4").html(JSON.parse(LFile).uptime);
+}else if(Ftype=="audio"){
+    $("section#music").css("display","block");
+    $("section#music div#title2 div:nth-child(2)").children("h4").html(JSON.parse(LFile).name);
+    $("section#music div#title2 div:nth-child(4)").children("h4").html(JSON.parse(LFile).upuser);
+    $("section#music div#title2 div:nth-child(5)").children("h4").html(JSON.parse(LFile).uptime);
+}else if(Ftype=="image" || Ftype=="document" || Ftype=="zip" || Ftype=="other"){
+    $("section#picture").css("display","block");
+    $("section#picture div#title3 div:nth-child(2)").children("h4").html(JSON.parse(LFile).name);
+    $("section#picture div#title3 div:nth-child(4)").children("h4").html(JSON.parse(LFile).upuser);
+    $("section#picture div#title3 div:nth-child(5)").children("h4").html(JSON.parse(LFile).uptime);
+    if(Ftype=="image"){
+        $("section#picture img").attr("src","img/pic1.jpg");
+    }else if(Ftype=="zip"){
+        $("section#picture img").attr("src","img/zip.jpg");
+    }else if(Ftype=="document"){
+        $("section#picture img").attr("src","img/txt.png");
+    }else if(Ftype=="other"){
+        $("section#picture img").attr("src","img/txt.png");
+    }
+}
+
+
+
+//--------音频
 var timer = null;
 var flag = false;//---暂停状态
 $(function(){
     var cover = $('#cover');
-    var title = $('#title');
     var player = $('#player');
     //动画默认暂停
     cover.style.webkitAnimationPlayState='paused';
@@ -22,29 +53,18 @@ $(function(){
 //---播放
 function play(){
     cover.style.webkitAnimationPlayState='';
-    title.style.webkitAnimationPlayState='';
     player.play();
-    //---同步滑块
-    timer = setInterval(function(){
-        var value = player.currentTime;
-        $('#slider').slider('option','value',value);
-    },500);
 }
 //---暂停
 function pause(){
     cover.style.webkitAnimationPlayState='paused';
-    title.style.webkitAnimationPlayState='paused';
     player.pause();
-    clearInterval(timer);
 }
 //---重置
 function stop(){
     cover.style.webkitAnimationPlayState='paused';
-    title.style.webkitAnimationPlayState='paused';
     player.pause();
-    clearInterval(timer);
     player.currentTime = 0;
-    $('#slider').slider('option','value',0);
 }
 function Toggle(){
     var btnToggle = document.getElementById('buttonPlayAndPause');
@@ -58,3 +78,4 @@ function Toggle(){
         flag=false;
     }
 }
+
