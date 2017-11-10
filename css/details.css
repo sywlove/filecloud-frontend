@@ -25,6 +25,7 @@
     font-size: 18px;
 }
 .video{
+    margin: 20px 0 0 0;
     background: black;
     text-align: center;
     height: auto;
@@ -42,12 +43,11 @@
     height: 36px;
 }
 #box{
-    width:500px;
-    height: 600px;
-    padding-top:20px;
-    margin:0px auto;
-    background-image:url('../img/bg3.jpg');
-    background-size:cover;
+    width:100%;
+    height: 400px;
+    padding-top: 20px;
+    margin:20px auto 0 auto;
+    background: #8a8a8a;
     border-radius: 10px;
 }
 #cover{
@@ -69,27 +69,6 @@
     width:200px;
     height: 200px;
     border-radius:50%;
-}
-#slider{
-    width:450px;
-    margin:30px auto;
-}
-#slider .ui-slider-range{
-    cursor: pointer;
-    background: #464646;
-}
-#slider .ui-slider-handle{
-    cursor: pointer;
-    border-radius: 50%;
-    background: #464646;
-}
-#title{
-    margin:30px auto;
-    width:300px;
-    font-size:14px;
-    text-align: center;
-    animation: color 10s linear infinite;
-
 }
 
 #controls{
@@ -167,4 +146,17 @@ section h4{
 }
 section span{
     font-size: 20px;
+}
+section#video{
+    display: none;
+}
+section#picture{
+    display: none;
+}
+section#music{
+    display: none;
+}
+section#picture #pic img{
+    width: 870px;
+    margin-top: 20px;
 }

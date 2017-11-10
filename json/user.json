@@ -1,19 +1,12 @@
-[
+﻿[
   {
     "name": "倒霉熊",
-    //文件名
     "type": "vedio",
-    //文件类型   vedio视频 image图片 document文档 zip压缩包 audio音频 other其他
     "upuser": "王冬",
-    //上传者
     "uptime": "2017-11-9",
-    //上传时间
     "state": "1",
-    //审核状态   0为审核  1审核通过   2审核未通过
     "read": "true",
-    //文件状态   false不显示   true显示
     "Dnum": "111"
-    //下载量,数据组自己添加此属性,初始为0
   },
   {
     "name": "倒霉蛋",
