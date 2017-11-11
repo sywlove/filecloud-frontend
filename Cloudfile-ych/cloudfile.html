@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloudfile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/blue.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/icheck.js"></script>
+    <style>
+        a, a:hover {
+            text-decoration: none;
+        }
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            color: grey;
+        }
+
+        .left {
+            /*height: 1000px;*/
+            background: #EFF4F8;
+        }
+
+        ul li {
+            cursor: pointer;
+        }
+
+        ul.list-group {
+            margin-top: 1rem;
+        }
+
+        .list-group-item {
+            padding-left: 3.5rem;
+        }
+
+        .list-group-item:nth-child(1) {
+            padding-left: 2rem;
+        }
+        .list-group-item.active {
+            color: #3b8cff;
+            background-color: #E3E8EB;
+            border-color: #E3E8EB;
+        }
+
+        .list-group-item {
+            background-color: #EFF4F8;
+            border: none;
+        }
+
+        ul li:hover {
+            background: #E3E8EB;
+        }
+
+        .right-header {
+            margin-top: 1.3rem;
+        }
+
+        .right-header > button {
+            cursor: pointer;
+            width: 8rem;
+            margin-left: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .right-header > button.btn-default {
+            color: #4D96FF;
+            background-color: #fff;
+            border: 1px solid #c0d9fe;
+        }
+
+        .right-header > button.btn-default:hover {
+            color: #77Afff;
+        }
+
+        .dl {
+            padding: 1rem;
+            border-radius: 15px;
+            border: 1px solid lightgrey;
+            display: none;
+        }
+        .dl a,.dl span{
+            color: gray;
+        }
+        /*文件*/
+        #files {
+            position: absolute;
+            left: 2em;
+            top: 1.3em;
+            width: 8rem;
+            height: 2.3rem;
+            opacity: 0;
+        }
+
+        /*图片*/
+        .photo {
+            /*border:1px solid red;*/
+            /*margin:1rem;*/
+            /*padding-left: .2rem;*/
+            /*display: none;*/
+            overflow-y: auto;
+        }
+
+        .photo img {
+            border: 3px solid lightgrey;
+            border-radius: 5px;
+            padding: 1px;
+            width: 18rem;
+            margin: 1rem 0.2rem 0rem 0.3rem;
+        }
+
+        .show {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+        }
+
+        .photo .show .pre {
+            position: absolute;
+            top: 45%;
+            left: 2rem;
+            font-size: 4rem;
+        }
+
+        .photo .show .next {
+            position: absolute;
+            top: 45%;
+            right: 2rem;
+            font-size: 4rem;
+        }
+
+        .photo .show .bigimg {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: auto;
+        }
+        /*文档*/
+        .doc-container {
+            line-height: 40px;
+        }
+        .other-tag{
+            color:#A83EDC;
+        }
+        /*视频*/
+        .vd {
+            display: none;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+        }
+
+        .close {
+            margin-top: 1rem;
+            margin-right: 2rem;
+            font-size: 3.5rem;
+            color: white;
+        }
+        .video-container {
+            line-height: 40px;
+        }
+        .video label{
+            position: absolute;
+            margin-left: 8px;
+        }
+        .video-tag,.doc-tag,.zip-tag,.other-tag{
+            margin-top: 12px;
+            margin-right: 10px;
+            float: left;
+            color: #8183F1;
+        }
+        .vdname
+        {
+            float: left;
+        }
+        .vdname:hover,
+        .zipname:hover,
+        .othername:hover,
+        .docname:hover{
+            color: #3C8CFF;
+        }
+
+        /*音频*/
+        .audio-container {
+            line-height: 40px;
+        }
+
+        .audio-container span {
+            cursor: pointer;
+        }
+
+        .audio-container img {
+            width: 20px;
+            height: 20px;
+        }
+        .audio-container .play img {
+            cursor: pointer;
+        }
+        .audio-name:hover{
+            color: #3C8CFF;
+        }
+        .music-tag{
+            margin-right: 10px;
+            color: #EB8789;
+        }
+        /*压缩包*/
+        .zip-container {
+            line-height: 40px;
+        }
+        .zip-tag{
+            color:#80CD46;
+        }
+        /*其他*/
+        .other-container {
+            line-height: 40px;
+        }
+        .other-tag{
+            color:#A83EDC;
+        }
+        /*.trash{*/
+            /*float: right;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!--左边-->
+        <div class="col-lg-3  col-md-3 col-sm-4 col-xl-2 col-12 left">
+            <ul class="list-group">
+                <li class="active list-group-item"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;全部文件</li>
+                <li class="list-group-item"><i class="fa fa-image"></i>&nbsp;&nbsp;图片</li>
+                <li class="list-group-item"><i class="fa fa-folder-o"></i>&nbsp;&nbsp;文档</li>
+                <li class="list-group-item"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;视频</li>
+                <li class="list-group-item"><i class="fa fa-music"></i>&nbsp;&nbsp;音乐</li>
+                <li class="list-group-item"><i class="fa fa-file-zip-o"></i>&nbsp;&nbsp;压缩包</li>
+                <li class="list-group-item"><i class="fa fa-code"></i>&nbsp;&nbsp;其他</li>
+            </ul>
+        </div>
+        <!--右边-->
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xl-10  col-12 border-black">
+            <!--头部按钮部分-->
+            <div class="right-header">
+                <button type="button" class="btn btn-primary"><i class="fa fa-upload"></i> 上传</button>
+                <input type="file" id="files">
+                <button type="button" class="btn btn-default"><i class="fa fa-download"></i> 离线下载</button>
+                <button type="button" class="btn btn-default  delete"><i class="fa fa-trash-o"></i> 删除</button>
+                <button type="button" class="btn btn-default"><i class="fa fa-share-square-o"></i> 分享</button>
+            </div>
+            <!--全部文件-->
+            <div class="dl all">
+                <span>全部</span>
+            </div>
+            <!--图片-->
+            <div class="dl photo">
+                <div id="smImg">
+                    <!--<p>第一天</p>-->
+                    <img src="img/img1.jpg"/>
+                    <img src="img/img2.jpg"/>
+                    <img src="img/img8.jpg"/>
+                    <img src="img/img1.jpg"/>
+                    <img src="img/img2.jpg"/>
+                    <img src="img/img3.jpg"/>
+                    <img src="img/img4.jpg"/>
+                    <img src="img/img5.jpg"/>
+                    <img src="img/img6.jpg"/>
+                    <img src="img/img7.jpg"/>
+                    <img src="img/img10.jpg"/>
+                    <img src="img/img11.jpg"/>
+                    <img src="img/img10.jpg"/>
+                    <img src="img/img12.jpg"/>
+                    <img src="img/img13.jpg"/>
+                    <img src="img/img14.jpg"/>
+                    <img src="img/img4.jpg"/>
+                    <img src="img/img6.jpg"/>
+                </div>
+                <div class="show">
+                    <a href="#" class='pre'><i class="fa fa-chevron-circle-left"></i></a>
+                    <a href="#" class='next'><i class="fa fa-chevron-circle-right"></i></a>
+                    <a href="#" class='close'><i class="fa fa-window-close"></i></a>
+                    <img class='bigimg' src=""/>
+                </div>
+            </div>
+            <!--文档-->
+            <div class="dl doc">
+                <div class="doc-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-text-o doc-tag"></i>
+                        <a href="#" class="docname">yangyan.txt</a>
+                        <!--<i class="fa fa-trash" class="trash"></i>-->
+                    </label>
+
+                </div>
+                <div  class="doc-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-text-o doc-tag"></i>
+                        <a href="#" class="docname">yangcaihan.txt</a>
+                    </label>
+                </div>
+                <div  class="doc-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-text-o doc-tag"></i>
+                        <a href="#" class="docname">weixinbo.txt</a>
+                    </label>
+                </div>
+                <div  class="doc-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-text-o doc-tag"></i>
+                        <a href="#" class="docname">wuyouwen.txt</a>
+                    </label>
+                </div>
+            </div>
+            <!--视频-->
+            <div class="dl video">
+                <div class="video-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-video-o video-tag"></i>
+                        <a href="#" class="vdname">movie46312894738.mp4</a>
+                        <!--<i class="fa fa-trash" class="trash"></i>-->
+                    </label>
+
+                </div>
+                <div  class="video-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-video-o video-tag"></i>
+                        <a href="#" class="vdname">movie64872346352.mp4</a>
+                    </label>
+                </div>
+                <div  class="video-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-video-o video-tag"></i>
+                        <a href="#" class="vdname">movie12345675689.mp4</a>
+                    </label>
+                </div>
+                <div  class="video-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-video-o video-tag"></i>
+                        <a href="#" class="vdname">movie12345675689.mp4</a>
+                    </label>
+                </div>
+                <div class="show">
+                    <a href="#" class="close"><i class="fa fa-window-close"></i></a>
+                    <video src="video/movie1.mp4" controls="controls" class="vd">您的浏览器不支持 video 标签。</video>
+                </div>
+            </div>
+            <!--音乐-->
+            <div class="dl music">
+                <div class="row audio-container">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5">
+                        <input type="checkbox" class="checkbox">
+                        <i class="fa fa-music music-tag"></i>
+                        <audio src="music/Bigbang%20-%20Bad%20Boy.mp3" class="audios"></audio>
+                        <span class="audio-name">bad boy.mp3</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
+                        <img src="img/play.png" alt="" class="playImg">
+                        <img src="img/stop.png" alt="" class="stopImg">
+                    </div>
+                </div>
+                <div class="row audio-container">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5">
+                        <input type="checkbox" class="checkbox">
+                        <i class="fa fa-music music-tag"></i>
+                        <audio src="music/TFBOYS%20-%20信仰之名.mp3"class="audios"></audio>
+                        <span class="audio-name">tfboys.mp3</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
+                        <img src="img/play.png" alt="" class="playImg">
+                        <img src="img/stop.png" alt="" class="stopImg">
+                    </div>
+                </div>
+                <div class="row audio-container">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5">
+                        <input type="checkbox" class="checkbox">
+                        <i class="fa fa-music music-tag"></i>
+                        <audio src="music/Bigbang%20-%20Bad%20Boy.mp3"class="audios"></audio>
+                        <span class="audio-name">bad boy.mp3</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
+                        <img src="img/play.png" alt="" class="playImg">
+                        <img src="img/stop.png" alt="" class="stopImg">
+                    </div>
+                </div>
+            </div>
+            <!--压缩包-->
+            <div class="dl zip">
+                <div  class="zip-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-archive-o zip-tag"></i>
+                        <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
+                    </label>
+                </div>
+                <div  class="zip-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-archive-o zip-tag"></i>
+                        <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
+                    </label>
+                </div>
+                <div  class="zip-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-archive-o zip-tag"></i>
+                        <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
+                    </label>
+                </div>
+                <div  class="zip-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-archive-o zip-tag"></i>
+                        <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
+                    </label>
+                </div>
+            </div>
+            <!--其他-->
+            <div class="dl other">
+                <div  class="other-container">
+                <input type="checkbox" class="checkbox"/>
+                <label class="clearfix">
+                    <i class="fa fa-file-code-o other-tag"></i>
+                    <a href="#" class="othername">1-2---window属性--frame-iframe.html</a>
+                </label>
+            </div>
+                <div  class="other-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa  fa-file-code-o other-tag"></i>
+                        <a href="#" class="othername">myPackage.js</a>
+                    </label>
+                </div>
+                <div  class="other-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-code-o other-tag"></i>
+                        <a href="#" class="othername">3-10---原型（prototype）模式--原型重写.html</a>
+                    </label>
+                </div>
+                <div  class="other-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa  fa-file-code-o other-tag"></i>
+                        <a href="#" class="othername">index.css</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //---设置对应的点击事件
+    $(function () {
+        var test;
+        $('.all').css('display', 'block');
+        $(".list-group li").click(function () {
+            $(".list-group li").removeClass('active');
+            $(this).addClass('active');
+            act = $(this).index();
+            switch (act) {
+                case 0:
+                    $('.all').css('display', 'block');
+                    $('.photo').css('display', 'none');
+                    $('.doc').css('display', 'none');
+                    $('.video').css('display', 'none');
+                    $('.music').css('display', 'none');
+                    $('.zip').css('display', 'none');
+                    $('.other').css('display', 'none');
+                    break;
+//                    console.log(act);
+//                    break;
+                case 1:
+                    $('.all').css('display', 'none');
+                    $('.photo').css('display', 'block');
+                    $('.doc').css('display', 'none');
+                    $('.video').css('display', 'none');
+                    $('.music').css('display', 'none');
+                    $('.zip').css('display', 'none');
+                    $('.other').css('display', 'none');
+                    break;
+                case 2:
+                    $('.all').css('display', 'none');
+                    $('.photo').css('display', 'none');
+                    $('.doc').css('display', 'block');
+                    $('.video').css('display', 'none');
+                    $('.music').css('display', 'none');
+                    $('.zip').css('display', 'none');
+                    $('.other').css('display', 'none');
+                    break;
+                case 3:
+                    $('.all').css('display', 'none');
+                    $('.photo').css('display', 'none');
+                    $('.doc').css('display', 'none');
+                    $('.video').css('display', 'block');
+                    $('.music').css('display', 'none');
+                    $('.zip').css('display', 'none');
+                    $('.other').css('display', 'none');
+                    break;
+                case 4:
+                    $('.all').css('display', 'none');
+                    $('.photo').css('display', 'none');
+                    $('.doc').css('display', 'none');
+                    $('.video').css('display', 'none');
+                    $('.music').css('display', 'block');
+                    $('.zip').css('display', 'none');
+                    $('.other').css('display', 'none');
+                    break;
+                case 5:
+                    $('.all').css('display', 'none');
+                    $('.photo').css('display', 'none');
+                    $('.doc').css('display', 'none');
+                    $('.video').css('display', 'none');
+                    $('.music').css('display', 'none');
+                    $('.zip').css('display', 'block');
+                    $('.other').css('display', 'none');
+                    break;
+                case 6:
+                    $('.all').css('display', 'none');
+                    $('.photo').css('display', 'none');
+                    $('.doc').css('display', 'none');
+                    $('.video').css('display', 'none');
+                    $('.music').css('display', 'none');
+                    $('.zip').css('display', 'none');
+                    $('.other').css('display', 'block');
+                    break;
+            }
+        })
+    });
+
+    //---设置高度
+    $(function () {
+        //---设置左边高度为可见窗口高度
+        $('.left').css('height', window.innerHeight);
+
+        //---设置右边内容高度=可见窗口高度-头部总高度
+        $('.dl').css('height', window.innerHeight - $('.right-header').outerHeight(true));
+
+    });
+
+    //---监听页面改变时的高度
+    $(window).resize(function () {
+        //---设置左边高度为可见窗口高度
+        $('.left').css('height', window.innerHeight);
+
+        //---设置右边内容高度=可见窗口高度-头部总高度
+        $('.dl').css('height', window.innerHeight - $('.right-header').outerHeight(true));
+
+    });
+
+    //--------------图片
+    $(function () {
+        var preIndex;
+        $('#smImg img').on('click', function () {
+            var path = $(this)[0].src;
+//				console.log(path);
+            $('.show').css('display', 'block');
+            $('.bigimg').attr('src', path);
+            preIndex = $(this).index();
+            console.log(preIndex);
+        });
+
+        $('.pre').on('click', function () {
+            if (preIndex <= 0) {
+                alert('抱歉，已经没有更多了！')
+            } else {
+                preIndex = --preIndex;
+//				console.log(preIndex);
+                var Src = $("img:eq(" + preIndex + ")")[0].src;
+                $('.bigimg').attr('src', Src);
+            }
+        });
+
+        $('.next').on('click', function () {
+            var imgLength = $('#smImg img').length;
+            if (preIndex >= imgLength - 1) {
+                alert('抱歉，已经是最后一张了！')
+            } else {
+                preIndex = ++preIndex;
+                console.log(preIndex);
+                var Src = $("img:eq(" + preIndex + ")")[0].src;
+                $('.bigimg').attr('src', Src);
+            }
+        });
+
+        $('.show .close').on('click', function () {
+            $('.show').css('display', 'none');
+        });
+    });
+
+    //---视频
+    $(function () {
+        $('.vdname').on('click', function () {
+            $('.video .show').css('display', 'block');
+            $('.vd').css('display', 'block');
+            $('.vdname').css('display', 'none');
+        });
+        $('.close').on('click', function () {
+            $('.video .show').css('display', 'none');
+            $('.vd').css('display', 'none');
+            $('.vdname').css('display', 'block');
+            $('.vd').trigger('pause');
+        })
+        $(".delete").on("click",function () {
+            $(".video-container .checkbox").each(function (index,ele) {
+                if($(this).attr("checked") == "checked"){
+                    $(this).parents('.video-container').remove();
+                }
+            })
+        })
+    });
+
+    //---音频
+    $(function () {
+        var flag = true;
+        $(".play .playImg").each(function (index,ele) {
+            $(this).on("click",function () {
+                if(flag==true){
+                    this.src = "img/pause.png";
+                    $(this).parent().prev().children()[2].play();
+//                    $(".audios")[0].play();
+                    flag=false;
+                    return;
+                }
+                if(flag == false){
+                    this.src = "img/play.png";
+                    $(this).parent().prev().children()[2].pause();
+//                    $(".audios")[0].pause();
+                    flag=true;
+                    return;
+                }
+            })
+        })
+        $(".play .stopImg").each(function () {
+            $(this).on("click",function (index,ele) {
+                $(this).parent().prev().children()[2].pause();
+                $(this).parent().prev().children()[2].currentTime = 0;
+                console.log($(this).prev().attr("src"));
+                $(this).prev().attr ("src","img/play.png");
+                flag=true;
+            })
+        })
+
+        $(".delete").on("click",function () {
+            $(".audio-container .checkbox").each(function (index,ele) {
+                if($(this).attr("checked") == "checked"){
+                    $(this).parents('.audio-container').remove();
+                }
+            })
+        })
+    });
+
+    //-----压缩包
+    $(function () {
+        $(".delete").on("click",function () {
+            $(".zip-container .checkbox").each(function (index,ele) {
+                if($(this).attr("checked") == "checked"){
+                    $(this).parents('.zip-container').remove();
+                }
+            })
+        })
+    })
+    //-----其他
+    $(function () {
+        $(".delete").on("click",function () {
+            $(".other-container .checkbox").each(function (index,ele) {
+                if($(this).attr("checked") == "checked"){
+                    $(this).parents('.other-container').remove();
+                }
+            })
+        })
+    })
+    //----文档
+    //-----其他
+    $(function () {
+        $(".delete").on("click",function () {
+            $(".doc-container .checkbox").each(function (index,ele) {
+                if($(this).attr("checked") == "checked"){
+                    $(this).parents('.doc-container').remove();
+                }
+            })
+        })
+    })
+    //---获取文件信息
+    $(function () {
+        $('#files').change(function () {
+            var f = document.getElementById('files').files[0];
+            for (var key in f) {
+//                console.log(key + ":" + f[key]);
+                if (key == 'name') {
+                    console.log(f[key]);
+                }
+                if (key == 'size') {
+                    console.log(f[key]);
+                }
+                if (key == 'type') {
+                    console.log(f[key]);
+                }
+            }
+
+
+            function p(s) {
+                return s < 10 ? '0' + s: s;
+            }
+            var myDate = new Date();
+            //获取当前年
+            var year = myDate.getFullYear();
+            //获取当前月
+            var month = myDate.getMonth() + 1;
+            //获取当前日
+            var date = myDate.getDate();
+            var h = myDate.getHours();       //获取当前小时数(0-23)
+            var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+            var s = myDate.getSeconds();
+
+            var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
+            console.log(now);
+        })
+
+    });
+    //===========单选框，复选框======
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+</script>
+</body>
+</html>
