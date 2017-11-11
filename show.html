@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频分类</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/show.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header myNavbar-header">
+            <button class="navbar-toggle myNavbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand logo">云分享</a>
+        </div>
+        <div class="navbar-collapse collapse myCollapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a id="dLabel" class="" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        admin
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu myDropdown-menu" aria-labelledby="dLabel">
+                        <li><a href="index.html"><span class="glyphicon glyphicon-screenshot"></span>&nbsp;&nbsp;前台首页</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人主页</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;个人设置</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;账户中心</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;我的收藏</a></li>
+                    </ul>
+                </li>
+                <li class="quit"><a href="#bbs"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="col-sm-12">
+        <h2 class="page-header">视频</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#sp" data-toggle="tab">视频</a></li>
+            <li><a href="#yp" data-toggle="tab">音频</a></li>
+            <li><a href="#tp" data-toggle="tab">图片</a></li>
+            <li><a href="#wj" data-toggle="tab">文件</a></li>
+            <li><a href="#ysb" data-toggle="tab">压缩包</a></li>
+            <li><a href="#qt" data-toggle="tab">其他</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="sp">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>视频</th>
+                        <th>上传者</th>
+                        <th>上传时间</th>
+                        <th>点击量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>1</span><img src="img/01.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>2</span><img src="img/02.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>3</span><img src="img/03.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination navbar-right"><!--pager-->
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&laquo;</a></li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="yp">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>音频</th>
+                        <th>上传者</th>
+                        <th>上传时间</th>
+                        <th>点击量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>1</span><img src="img/03.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>2</span><img src="img/04.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>3</span><img src="img/05.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination navbar-right"><!--pager-->
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&laquo;</a></li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="tp">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>上传者</th>
+                        <th>上传时间</th>
+                        <th>点击量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>1</span><img src="img/04.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>2</span> <img src="img/06.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>3</span><img src="img/05.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination navbar-right"><!--pager-->
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&laquo;</a></li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="wj">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>文件</th>
+                        <th>上传者</th>
+                        <th>上传时间</th>
+                        <th>点击量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>1</span><img src="img/06.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>2</span><img src="img/02.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>3</span><img src="img/05.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination navbar-right"><!--pager-->
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&laquo;</a></li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="ysb">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>压缩包</th>
+                        <th>上传者</th>
+                        <th>上传时间</th>
+                        <th>点击量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>1</span><img src="img/09.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>2</span><img src="img/10.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>3</span><img src="img/11.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a>
+                        </td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination navbar-right"><!--pager-->
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&laquo;</a></li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="qt">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>其他</th>
+                        <th>上传者</th>
+                        <th>上传时间</th>
+                        <th>点击量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>1</span><img src="img/10.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>2</span><img src="img/04.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>3</span> <img src="img/06.png" alt="">
+                            <a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2015/08/08</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    <tr>
+                        <td><a>泛Mooc职业教育，效果和就业为主</a></td>
+                        <td>朱朝兵</td>
+                        <td>2017/11/09</td>
+                        <td>13220</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination navbar-right"><!--pager-->
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&laquo;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="row footer">
+    <p class="text-center">
+        copyright&copy;2012-2015&nbsp;&nbsp;&nbsp;ICP备xxxxxxxx号-4
+    </p>
+</div>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src='js/bootstrap.min.js'></script>
+<script src="js/show.js"></script>
+</body>
+</html>

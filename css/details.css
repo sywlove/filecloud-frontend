@@ -1,0 +1,162 @@
+.myNavbar{
+     height: 62px;
+ }
+.myNavbar-header{
+    height: 60px;
+    line-height: 60px;
+}
+.logo{
+    line-height: 30px;
+    font-size: 30px;
+}
+.myNavbar-toggle{
+    margin-top: 10px;
+}
+.dropdown{
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 18px;
+}
+.dropdown a{
+    cursor: pointer;
+}
+.quit{
+    margin-top: 10px;
+    font-size: 18px;
+}
+.video{
+    margin: 20px 0 0 0;
+    background: black;
+    text-align: center;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-bottom: 15px;
+}
+.video video{
+    margin: 0 auto;
+    width: 75%;
+}
+.download{
+    width: 100px;
+    height: 36px;
+}
+#box{
+    width:100%;
+    height: 400px;
+    padding-top: 20px;
+    margin:20px auto 0 auto;
+    background: #8a8a8a;
+    border-radius: 10px;
+}
+#cover{
+    position: relative;
+    background:url('../img/bg2.jpg') center center no-repeat;
+    height:300px;
+    width:300px;
+    margin:0px auto;
+    border-radius:50%;
+    animation: scroll 28s linear infinite;
+
+}
+#cover img{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-100px;
+    margin-top:-100px;
+    width:200px;
+    height: 200px;
+    border-radius:50%;
+}
+
+#controls{
+    margin:0px auto;
+    width: 150px;
+    height: 50px;
+}
+#controls div{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+#buttonPlay{
+    float:left;
+    background: url("../img/jtbq_014.png");
+    background-size: cover;
+}
+#buttonPause{;
+    float:left;
+    background: url("../img/jtbq_013.png");
+    background-size: cover;
+}
+#buttonStop{
+    float:right;
+    background: url("../img/jtbq_016.png");
+    background-size: cover;
+}
+#buttonPlayAndPause{
+    cursor: pointer;
+    float:left;
+
+    width: 50px;
+    height: 50px;
+    background: url("../img/jtbq_014.png");
+    background-size: cover;
+}
+/*定义一个帧动画*/
+/*关键字 动画名字*/
+@-webkit-keyframes scroll{
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    50%{
+        -webkit-transform: rotate(180deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes color{
+    0%{
+        color:red;
+    }
+    20%{
+        color:blue;
+    }
+    40%{
+        color:green;
+    }
+    60%{
+        color:yellow;
+    }
+    80%{
+        color:black;
+    }
+    100%{
+        color:orangered;
+    }
+}
+#picture img{
+    margin: 0 auto;
+}
+section h4{
+    display: inline-block;
+}
+section span{
+    font-size: 20px;
+}
+section#video{
+    display: none;
+}
+section#picture{
+    display: none;
+}
+section#music{
+    display: none;
+}
+section#picture #pic img{
+    width: 870px;
+    margin-top: 20px;
+}
