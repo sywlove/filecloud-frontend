@@ -85,3 +85,35 @@ select{
 	height: 30px;
 	border-radius: 5px;
 }
+.box{
+	width: 200px;
+	height: 200px;
+	float:left;
+	margin: 20px;
+}
+.box img{
+	width: 100%;
+	height: 100%;
+}
+.cg p{
+	width: 20%;
+	border: 1px solid white;
+	color: white;
+	text-align: center;
+	padding: 5px;
+	float: left;
+	cursor: pointer;
+	margin-top: 90px;
+	border-radius: 5px;
+}
+.modal-body img{
+	width: 20%;
+	margin: 2%;
+	border:1px solid lightgrey;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: all 0.5s linear;
+}
+.modal-body img:hover{
+	transform: scale(1.1);
+}
