@@ -41,24 +41,32 @@ $(window).scroll(function () {
     }
 });
 $(".file ul li").on("click", function () {
-
-    var upName = $(this).children("p").children("span").html();
-    console.log(upName);
-//            $.ajax({
-//                type:'get',
-//                url:"user.json",
-//                dataType:'json',
-//                success:function (data) {
-//                    alert('data');
-//                }
-//            });
-//            $.getJSON("user.json", function (data) {
-//                for (var i = 0; i < data.length; i++) {
-//                    if (data[i].upuser == upName) {
-//                        window.localStorage.setItem('info', JSON.stringify(data[i]));
-//                    }
-//
-//                }
-//            });
-//            $(location).attr("href", "details.html");
+    var fileName = $(this).children("p").children("span").html();
+    $.getJSON("json/file.json", function (data) {
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].name == fileName) {
+                window.localStorage.setItem('file', JSON.stringify(data[i]));
+                $(location).attr("href", "details.html");
+            }
+        }
+    });
+});
+$(".hot ul li").on("click",function () {
+   var fileName = $(this).children("a").children("p").children("span:eq(1)").html();
+    $.getJSON("json/file.json", function (data) {
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].name == fileName) {
+                window.localStorage.setItem('file', JSON.stringify(data[i]));
+                $(location).attr("href", "details.html");
+            }
+        }
+    });
+});
+$(".more").on("click",function () {
+    var Type = $(this).attr("name");
+    var obj={
+        "type":Type
+    };
+    window.localStorage.setItem('Type', JSON.stringify(obj));
+    $(location).attr("href", "show.html");
 });
