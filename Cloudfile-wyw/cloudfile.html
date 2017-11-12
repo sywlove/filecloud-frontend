@@ -13,7 +13,37 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/icheck.js"></script>
+    <script src="js/paging.js"></script>
     <style>
+        /*头部*/
+        nav {
+            height: 70px;
+            color: white;
+            background: url("img/bg4.jpg");
+        }
+
+        nav>div:nth-child(2) {
+            line-height: 70px;
+        }
+        nav>div:nth-child(2)>i {
+            position: relative;
+            top: 5px;
+        }
+
+        nav>div>a {
+            float: right;
+            margin-right: 2rem;
+            color: white;
+        }
+        nav>div>a:hover {
+            color: lightskyblue;
+        }
+        .yun{
+            font-size:30px;
+            font-weight:700;
+            font-family: '仿宋';
+        }
+
         a, a:hover {
             text-decoration: none;
         }
@@ -46,6 +76,7 @@
         .list-group-item:nth-child(1) {
             padding-left: 2rem;
         }
+
         .list-group-item.active {
             color: #3b8cff;
             background-color: #E3E8EB;
@@ -88,9 +119,11 @@
             border: 1px solid lightgrey;
             display: none;
         }
-        .dl a,.dl span{
+
+        .dl a, .dl span {
             color: gray;
         }
+
         /*文件*/
         #files {
             position: absolute;
@@ -152,13 +185,17 @@
             left: 0;
             width: auto;
         }
+
         /*文档*/
         .doc-container {
             line-height: 40px;
         }
-        .other-tag{
-            color:#A83EDC;
+
+        .doc-tag {
+            color: #FFAA00;
+            margin-right: 20px;
         }
+
         /*视频*/
         .vd {
             display: none;
@@ -178,27 +215,32 @@
             font-size: 3.5rem;
             color: white;
         }
+
         .video-container {
             line-height: 40px;
         }
-        .video label{
+
+        .video label,.doc label,.zip label,.other label
+        {
             position: absolute;
-            margin-left: 8px;
+            margin-left: 28px;
         }
-        .video-tag,.doc-tag,.zip-tag,.other-tag{
+
+        .video-tag {
             margin-top: 12px;
-            margin-right: 10px;
+            margin-right: 20px;
             float: left;
             color: #8183F1;
         }
-        .vdname
-        {
+
+        .vdname {
             float: left;
         }
+
         .vdname:hover,
         .zipname:hover,
         .othername:hover,
-        .docname:hover{
+        .docname:hover {
             color: #3C8CFF;
         }
 
@@ -215,36 +257,93 @@
             width: 20px;
             height: 20px;
         }
+
         .audio-container .play img {
             cursor: pointer;
         }
-        .audio-name:hover{
+
+        .audio-name:hover {
             color: #3C8CFF;
         }
-        .music-tag{
-            margin-right: 10px;
+
+        .music-tag {
+            margin-left: 20px;
+            margin-right: 20px;
             color: #EB8789;
         }
+
         /*压缩包*/
         .zip-container {
             line-height: 40px;
         }
-        .zip-tag{
-            color:#80CD46;
+
+        .zip-tag {
+            color: #80CD46;
+            margin-right: 20px;
         }
+
         /*其他*/
         .other-container {
             line-height: 40px;
         }
-        .other-tag{
-            color:#A83EDC;
+
+        .other-tag {
+            color: #A83EDC;
+            margin-right: 20px;
+        }
+        /*表格字体大小*/
+        table {
+            font-size: 0.8rem;
+            font-family: "Microsoft YaHei UI";
+        }
+
+        table th {
+            font-weight:normal;
+        }
+
+
+        /*分享*/
+        .share-type {
+            padding-left: 2.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            display: none;
+            border: 2px solid lightskyblue;
+            border-radius: 5px;
+        }
+        .org{
+            line-height: 32px;
         }
         /*.trash{*/
+            /*display: block;*/
             /*float: right;*/
         /*}*/
+        #smImg div:nth-child(2){
+            display: none;
+        }
     </style>
 </head>
 <body>
+<!--头部-->
+<nav class="navbar">
+    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+
+    </div>
+    <div class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2">
+        <i class="fa fa-cloud fa-2x"></i>
+        <a href="#" class="yun">云分享</a>
+    </div>
+    <div class="col-2 col-sm-2 col-md-4 col-lg-5 col-xl-5">
+
+    </div>
+    <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+        <a href="#">注册</a>
+        <a href="#">登录</a>
+    </div>
+    <div class="col-1 col-sm-2 col-md-1 col-lg-2 col-xl-1">
+
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="row">
         <!--左边-->
@@ -258,6 +357,7 @@
                 <li class="list-group-item"><i class="fa fa-file-zip-o"></i>&nbsp;&nbsp;压缩包</li>
                 <li class="list-group-item"><i class="fa fa-code"></i>&nbsp;&nbsp;其他</li>
             </ul>
+            <div class="bdsharebuttonbox share-type"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
         </div>
         <!--右边-->
         <div class="col-lg-9 col-md-9 col-sm-8 col-xl-10  col-12 border-black">
@@ -265,37 +365,91 @@
             <div class="right-header">
                 <button type="button" class="btn btn-primary"><i class="fa fa-upload"></i> 上传</button>
                 <input type="file" id="files">
-                <button type="button" class="btn btn-default"><i class="fa fa-download"></i> 离线下载</button>
+                <button type="button" class="btn btn-default down"><i class="fa fa-download"></i> 离线下载</button>
                 <button type="button" class="btn btn-default  delete"><i class="fa fa-trash-o"></i> 删除</button>
-                <button type="button" class="btn btn-default"><i class="fa fa-share-square-o"></i> 分享</button>
+                <button type="button" class="btn btn-default" id="share"><i class="fa fa-share-square-o"></i> 分享</button>
             </div>
             <!--全部文件-->
             <div class="dl all">
-                <span>全部</span>
+                <table class="table table-hover  mx-0" id="table">
+                    <thead class="col-12">
+                    <tr class="row mx-0">
+                        <th class="col-1 col-xl-1 col-sm-1 text-center border-bottom-0"></th>
+                        <th class="col-4 col-xl-5 col-sm-4 border-bottom-0">文件名</th>
+                        <th class="col-3 col-xl-3 col-sm-3 border-bottom-0">文件大小</th>
+                        <th class="col-4 col-xl-3 col-sm-4 border-bottom-0">修改日期</th>
+                    </tr>
+                    </thead>
+                    <!--模板-->
+                    <thead class="col-12">
+                    <tr class="row mx-0">
+                        <th class="col-1 col-xl-1 col-sm-1 text-center border-bottom-0"><input type="checkbox"></th>
+                        <th class="col-4 col-xl-5 col-sm-4 border-bottom-0 org"><a href="">movie1.mp4</a></th>
+                        <th class="col-3 col-xl-3 col-sm-3 border-bottom-0 org">866kb</th>
+                        <th class="col-4 col-xl-3 col-sm-4 border-bottom-0 org">2017-11-11 16:17:24</th>
+                    </tr>
+                    </thead>
+                    <thead class="col-12">
+                    <tr class="row mx-0">
+                        <th class="col-1 col-xl-1 col-sm-1 text-center border-bottom-0"><input type="checkbox"></th>
+                        <th class="col-4 col-xl-5 col-sm-4 border-bottom-0 org"><a href="">tfboys.mp3</a></th>
+                        <th class="col-3 col-xl-3 col-sm-3 border-bottom-0 org">124kb</th>
+                        <th class="col-4 col-xl-3 col-sm-4 border-bottom-0 org">2017-11-11 16:20:24</th>
+                    </tr>
+                    </thead>
+                    <thead class="col-12">
+                    <tr class="row mx-0">
+                        <th class="col-1 col-xl-1 col-sm-1 text-center border-bottom-0"><input type="checkbox"></th>
+                        <th class="col-4 col-xl-5 col-sm-4 border-bottom-0 org"><a href="">yangyan.txt</a></th>
+                        <th class="col-3 col-xl-3 col-sm-3 border-bottom-0 org">43kb</th>
+                        <th class="col-4 col-xl-3 col-sm-4 border-bottom-0 org">2017-11-11 17:17:09</th>
+                    </tr>
+                    </thead>
+                    <thead class="col-12">
+                    <tr class="row mx-0">
+                        <th class="col-1 col-xl-1 col-sm-1 text-center border-bottom-0"><input type="checkbox"></th>
+                        <th class="col-4 col-xl-5 col-sm-4 border-bottom-0 org"><a href="">网络环境下的图书馆管理系统.zip</a></th>
+                        <th class="col-3 col-xl-3 col-sm-3 border-bottom-0 org">544kb</th>
+                        <th class="col-4 col-xl-3 col-sm-4 border-bottom-0 org">2017-11-12 18:13:11</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
             </div>
             <!--图片-->
             <div class="dl photo">
                 <div id="smImg">
                     <!--<p>第一天</p>-->
-                    <img src="img/img1.jpg"/>
-                    <img src="img/img2.jpg"/>
-                    <img src="img/img8.jpg"/>
-                    <img src="img/img1.jpg"/>
-                    <img src="img/img2.jpg"/>
-                    <img src="img/img3.jpg"/>
-                    <img src="img/img4.jpg"/>
-                    <img src="img/img5.jpg"/>
-                    <img src="img/img6.jpg"/>
-                    <img src="img/img7.jpg"/>
-                    <img src="img/img10.jpg"/>
-                    <img src="img/img11.jpg"/>
-                    <img src="img/img10.jpg"/>
-                    <img src="img/img12.jpg"/>
-                    <img src="img/img13.jpg"/>
-                    <img src="img/img14.jpg"/>
-                    <img src="img/img4.jpg"/>
-                    <img src="img/img6.jpg"/>
+                    <div>
+                        <img src="img/img1.jpg"/>
+                        <img src="img/img2.jpg"/>
+                        <img src="img/img8.jpg"/>
+                        <img src="img/img1.jpg"/>
+                        <img src="img/img2.jpg"/>
+                        <img src="img/img3.jpg"/>
+                        <img src="img/img4.jpg"/>
+                        <img src="img/img5.jpg"/>
+                        <img src="img/img6.jpg"/>
+                    </div>
+                    <div>
+                        <img src="img/img7.jpg"/>
+                        <img src="img/img10.jpg"/>
+                        <img src="img/img11.jpg"/>
+                        <img src="img/img10.jpg"/>
+                        <img src="img/img12.jpg"/>
+                        <img src="img/img13.jpg"/>
+                        <img src="img/img14.jpg"/>
+                        <img src="img/img4.jpg"/>
+                        <img src="img/img6.jpg"/>
+                    </div>
                 </div>
+                <div style="float:right">
+                    <button class="btn btn-default">1</button>
+                    <button class="btn btn-default">2</button>
+                </div>
+
                 <div class="show">
                     <a href="#" class='pre'><i class="fa fa-chevron-circle-left"></i></a>
                     <a href="#" class='next'><i class="fa fa-chevron-circle-right"></i></a>
@@ -310,25 +464,24 @@
                     <label class="clearfix">
                         <i class="fa fa-file-text-o doc-tag"></i>
                         <a href="#" class="docname">yangyan.txt</a>
-                        <!--<i class="fa fa-trash" class="trash"></i>-->
                     </label>
-
                 </div>
-                <div  class="doc-container">
+
+                <div class="doc-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-text-o doc-tag"></i>
                         <a href="#" class="docname">yangcaihan.txt</a>
                     </label>
                 </div>
-                <div  class="doc-container">
+                <div class="doc-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-text-o doc-tag"></i>
                         <a href="#" class="docname">weixinbo.txt</a>
                     </label>
                 </div>
-                <div  class="doc-container">
+                <div class="doc-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-text-o doc-tag"></i>
@@ -345,23 +498,22 @@
                         <a href="#" class="vdname">movie46312894738.mp4</a>
                         <!--<i class="fa fa-trash" class="trash"></i>-->
                     </label>
-
                 </div>
-                <div  class="video-container">
+                <div class="video-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-video-o video-tag"></i>
                         <a href="#" class="vdname">movie64872346352.mp4</a>
                     </label>
                 </div>
-                <div  class="video-container">
+                <div class="video-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-video-o video-tag"></i>
                         <a href="#" class="vdname">movie12345675689.mp4</a>
                     </label>
                 </div>
-                <div  class="video-container">
+                <div class="video-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-video-o video-tag"></i>
@@ -382,16 +534,19 @@
                         <audio src="music/Bigbang%20-%20Bad%20Boy.mp3" class="audios"></audio>
                         <span class="audio-name">bad boy.mp3</span>
                     </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-3 play">
                         <img src="img/play.png" alt="" class="playImg">
                         <img src="img/stop.png" alt="" class="stopImg">
                     </div>
+                    <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xl-2  col-2">-->
+                        <!--<a href=""><i class="fa fa-trash" class="delete"></i></a>-->
+                    <!--</div>-->
                 </div>
                 <div class="row audio-container">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5">
                         <input type="checkbox" class="checkbox">
                         <i class="fa fa-music music-tag"></i>
-                        <audio src="music/TFBOYS%20-%20信仰之名.mp3"class="audios"></audio>
+                        <audio src="music/TFBOYS%20-%20信仰之名.mp3" class="audios"></audio>
                         <span class="audio-name">tfboys.mp3</span>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
@@ -403,7 +558,7 @@
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5">
                         <input type="checkbox" class="checkbox">
                         <i class="fa fa-music music-tag"></i>
-                        <audio src="music/Bigbang%20-%20Bad%20Boy.mp3"class="audios"></audio>
+                        <audio src="music/Bigbang%20-%20Bad%20Boy.mp3" class="audios"></audio>
                         <span class="audio-name">bad boy.mp3</span>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xl-5  col-5 play">
@@ -414,28 +569,28 @@
             </div>
             <!--压缩包-->
             <div class="dl zip">
-                <div  class="zip-container">
+                <div class="zip-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-archive-o zip-tag"></i>
                         <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
                     </label>
                 </div>
-                <div  class="zip-container">
+                <div class="zip-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-archive-o zip-tag"></i>
                         <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
                     </label>
                 </div>
-                <div  class="zip-container">
+                <div class="zip-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-archive-o zip-tag"></i>
                         <a href="#" class="zipname">网络环境下的图书馆管理系统.zip</a>
                     </label>
                 </div>
-                <div  class="zip-container">
+                <div class="zip-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-archive-o zip-tag"></i>
@@ -445,28 +600,28 @@
             </div>
             <!--其他-->
             <div class="dl other">
-                <div  class="other-container">
-                <input type="checkbox" class="checkbox"/>
-                <label class="clearfix">
-                    <i class="fa fa-file-code-o other-tag"></i>
-                    <a href="#" class="othername">1-2---window属性--frame-iframe.html</a>
-                </label>
-            </div>
-                <div  class="other-container">
+                <div class="other-container">
+                    <input type="checkbox" class="checkbox"/>
+                    <label class="clearfix">
+                        <i class="fa fa-file-code-o other-tag"></i>
+                        <a href="#" class="othername">1-2---window属性--frame-iframe.html</a>
+                    </label>
+                </div>
+                <div class="other-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa  fa-file-code-o other-tag"></i>
                         <a href="#" class="othername">myPackage.js</a>
                     </label>
                 </div>
-                <div  class="other-container">
+                <div class="other-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa fa-file-code-o other-tag"></i>
                         <a href="#" class="othername">3-10---原型（prototype）模式--原型重写.html</a>
                     </label>
                 </div>
-                <div  class="other-container">
+                <div class="other-container">
                     <input type="checkbox" class="checkbox"/>
                     <label class="clearfix">
                         <i class="fa  fa-file-code-o other-tag"></i>
@@ -481,76 +636,33 @@
 <script>
     //---设置对应的点击事件
     $(function () {
-        var test;
+        var act;
         $('.all').css('display', 'block');
         $(".list-group li").click(function () {
             $(".list-group li").removeClass('active');
             $(this).addClass('active');
             act = $(this).index();
+            $('.dl').css('display', 'none');
             switch (act) {
                 case 0:
                     $('.all').css('display', 'block');
-                    $('.photo').css('display', 'none');
-                    $('.doc').css('display', 'none');
-                    $('.video').css('display', 'none');
-                    $('.music').css('display', 'none');
-                    $('.zip').css('display', 'none');
-                    $('.other').css('display', 'none');
                     break;
-//                    console.log(act);
-//                    break;
                 case 1:
-                    $('.all').css('display', 'none');
                     $('.photo').css('display', 'block');
-                    $('.doc').css('display', 'none');
-                    $('.video').css('display', 'none');
-                    $('.music').css('display', 'none');
-                    $('.zip').css('display', 'none');
-                    $('.other').css('display', 'none');
                     break;
                 case 2:
-                    $('.all').css('display', 'none');
-                    $('.photo').css('display', 'none');
                     $('.doc').css('display', 'block');
-                    $('.video').css('display', 'none');
-                    $('.music').css('display', 'none');
-                    $('.zip').css('display', 'none');
-                    $('.other').css('display', 'none');
                     break;
                 case 3:
-                    $('.all').css('display', 'none');
-                    $('.photo').css('display', 'none');
-                    $('.doc').css('display', 'none');
                     $('.video').css('display', 'block');
-                    $('.music').css('display', 'none');
-                    $('.zip').css('display', 'none');
-                    $('.other').css('display', 'none');
                     break;
                 case 4:
-                    $('.all').css('display', 'none');
-                    $('.photo').css('display', 'none');
-                    $('.doc').css('display', 'none');
-                    $('.video').css('display', 'none');
                     $('.music').css('display', 'block');
-                    $('.zip').css('display', 'none');
-                    $('.other').css('display', 'none');
                     break;
                 case 5:
-                    $('.all').css('display', 'none');
-                    $('.photo').css('display', 'none');
-                    $('.doc').css('display', 'none');
-                    $('.video').css('display', 'none');
-                    $('.music').css('display', 'none');
                     $('.zip').css('display', 'block');
-                    $('.other').css('display', 'none');
                     break;
                 case 6:
-                    $('.all').css('display', 'none');
-                    $('.photo').css('display', 'none');
-                    $('.doc').css('display', 'none');
-                    $('.video').css('display', 'none');
-                    $('.music').css('display', 'none');
-                    $('.zip').css('display', 'none');
                     $('.other').css('display', 'block');
                     break;
             }
@@ -617,9 +729,13 @@
         });
     });
 
-    //---视频
+    //---视频-----------
     $(function () {
         $('.vdname').on('click', function () {
+            act = $(this).parents('.video-container').index();
+            console.log(act);
+            var Src = 'video/movie' + act + '.mp4';
+            $('.vd').attr('src', Src);
             $('.video .show').css('display', 'block');
             $('.vd').css('display', 'block');
             $('.vdname').css('display', 'none');
@@ -630,10 +746,21 @@
             $('.vdname').css('display', 'block');
             $('.vd').trigger('pause');
         })
-        $(".delete").on("click",function () {
-            $(".video-container .checkbox").each(function (index,ele) {
-                if($(this).attr("checked") == "checked"){
+        // =======删除=======
+        $(".delete").on("click", function () {
+            $(".video-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
                     $(this).parents('.video-container').remove();
+                }
+            })
+        })
+        // ==========下载===========
+        $('.down').on('click', function () {
+            $(".video-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
+                    var name = $(this).parents('.video-container').children('label').children('a').text();
+                    alert('恭喜你！下载'+name+'成功！');
+                    return false;
                 }
             })
         })
@@ -642,95 +769,154 @@
     //---音频
     $(function () {
         var flag = true;
-        $(".play .playImg").each(function (index,ele) {
-            $(this).on("click",function () {
-                if(flag==true){
+        $(".play .playImg").each(function (index, ele) {
+            $(this).on("click", function () {
+                if (flag == true) {
                     this.src = "img/pause.png";
                     $(this).parent().prev().children()[2].play();
 //                    $(".audios")[0].play();
-                    flag=false;
+                    flag = false;
                     return;
                 }
-                if(flag == false){
+                if (flag == false) {
                     this.src = "img/play.png";
                     $(this).parent().prev().children()[2].pause();
-//                    $(".audios")[0].pause();
-                    flag=true;
+                    flag = true;
                     return;
                 }
             })
         })
         $(".play .stopImg").each(function () {
-            $(this).on("click",function (index,ele) {
+            $(this).on("click", function (index, ele) {
                 $(this).parent().prev().children()[2].pause();
                 $(this).parent().prev().children()[2].currentTime = 0;
                 console.log($(this).prev().attr("src"));
-                $(this).prev().attr ("src","img/play.png");
-                flag=true;
+                $(this).prev().attr("src", "img/play.png");
+                flag = true;
             })
         })
-
-        $(".delete").on("click",function () {
-            $(".audio-container .checkbox").each(function (index,ele) {
-                if($(this).attr("checked") == "checked"){
+        //=======删除===========
+        $(".delete").on("click", function () {
+            $(".audio-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
                     $(this).parents('.audio-container').remove();
+                }
+            })
+        })
+        // ==========下载===========
+        $('.down').on('click', function () {
+            $(".audio-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
+                    var name = $(this).parents('.audio-container').children().children('span').text();
+                    alert('恭喜你！下载'+name+'成功！');
                 }
             })
         })
     });
 
-    //-----压缩包
+//--------------压缩包-------------
     $(function () {
-        $(".delete").on("click",function () {
-            $(".zip-container .checkbox").each(function (index,ele) {
-                if($(this).attr("checked") == "checked"){
+        $(".delete").on("click", function () {
+            $(".zip-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
                     $(this).parents('.zip-container').remove();
                 }
             })
         })
+        // ==========下载===========
+        $('.down').on('click', function () {
+            $(".zip-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
+                    var name = $(this).parents('.zip-container').children('label').children('a').text();
+                    alert('恭喜你！下载'+name+'成功！');
+                    return false;
+                }
+            })
+        })
     })
-    //-----其他
+//----------其他--------------------
     $(function () {
-        $(".delete").on("click",function () {
-            $(".other-container .checkbox").each(function (index,ele) {
-                if($(this).attr("checked") == "checked"){
+        $(".delete").on("click", function () {
+            $(".other-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
                     $(this).parents('.other-container').remove();
                 }
             })
         })
-    })
-    //----文档
-    //-----其他
-    $(function () {
-        $(".delete").on("click",function () {
-            $(".doc-container .checkbox").each(function (index,ele) {
-                if($(this).attr("checked") == "checked"){
-                    $(this).parents('.doc-container').remove();
+        // ==========下载===========
+        $('.down').on('click', function () {
+            $(".other-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
+                    var name = $(this).parents('.other-container').children('label').children('a').text();
+                    alert('恭喜你！下载'+name+'成功！');
+                    return false;
                 }
             })
         })
     })
-    //---获取文件信息
+//-------------文档------------
+    $(function () {
+        $(".delete").on("click", function () {
+            $(".doc-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
+                    $(this).parents('.doc-container').remove();
+                }
+            })
+        });
+        // ==========下载===========
+        $('.down').on('click', function () {
+            $(".doc-container .checkbox").each(function (index, ele) {
+                if ($(this).attr("checked") == "checked") {
+                    var name = $(this).parents('.doc-container').children('label').children('a').text();
+                        alert('恭喜你！下载'+name+'成功！');
+                        return false;
+                }
+            })
+        })
+    })
+    //===========单选框，复选框======
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+//-------获取文件信息-----------
+    var nameArray = [];
+    var sizeArray = [];
+    var typeArray = [];
+    var timeArray = [];
+
     $(function () {
         $('#files').change(function () {
             var f = document.getElementById('files').files[0];
             for (var key in f) {
 //                console.log(key + ":" + f[key]);
                 if (key == 'name') {
-                    console.log(f[key]);
+                    var name = f[key];
+//                    console.log("name:" + f[key]);
+                    nameArray.push(f[key]);
                 }
                 if (key == 'size') {
-                    console.log(f[key]);
+                    var size = f[key];
+//                    console.log("size:" + f[key]);
+                    sizeArray.push(f[key]);
                 }
                 if (key == 'type') {
-                    console.log(f[key]);
+                    var type = f[key];
+//                    console.log("type:" + f[key]);
+                    typeArray.push(f[key]);
                 }
             }
 
 
-            function p(s) {
-                return s < 10 ? '0' + s: s;
+            for (var i = 0; i < nameArray.length; i++) {
+                console.log("nameArray为：" + nameArray[i]);
             }
+
+            function p(s) {
+                return s < 10 ? '0' + s : s;
+            }
+
             var myDate = new Date();
             //获取当前年
             var year = myDate.getFullYear();
@@ -743,15 +929,49 @@
             var s = myDate.getSeconds();
 
             var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
-            console.log(now);
-        })
+//            console.log("uptime:" + now);
+            timeArray.push(now);
 
+            //---将数据存入localstroage
+            var localstroage = window.localStorage;
+//            console.log(nameArray);
+            localstroage.setItem('name', nameArray);
+//            console.log(sizeArray);
+            localstroage.setItem('size', sizeArray);
+//            console.log(typeArray);
+            localstroage.setItem('type', typeArray);
+//            console.log(timeArray);
+            localstroage.setItem('uptime', timeArray);
+
+            //---清空tbody后进行添加
+            $('tbody tr').remove();
+            for (var i = 0; i < nameArray.length; i++) {
+                var tablerow = '<tbody class="col-12">\n' +
+                    '                    <tr class="row mx-0">\n' +
+                    '                        <td class="col-1 col-xl-1 col-sm-1 text-center"><input type="checkbox"></td>\n' +
+                    '                        <td class="col-4 col-xl-5 col-sm-4 ">' + nameArray[i] + '</td>\n' +
+                    '                        <td class="col-3 col-xl-3 col-sm-3 ">' + (sizeArray[i] / 1024).toFixed(1) + ' kB' + '</td>\n' +
+                    '                        <td class="col-4 col-xl-3 col-sm-4 ">' + timeArray[i] + '</td>\n' +
+                    '                    </tr>\n' +
+                    '                    </tbody>';
+//                console.log(tablerow);
+                $('#table').append(tablerow);
+            }
+        })
     });
-    //===========单选框，复选框======
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
+
+
+
+</script>
+<!--分享-->
+<script>
+    var timer=null;
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    $('#share').on('click',function () {
+        $('.share-type').fadeIn(500);
+        timer=setTimeout(function () {
+            $('.share-type').css('border','none');
+        },1000);
     });
 </script>
 </body>
