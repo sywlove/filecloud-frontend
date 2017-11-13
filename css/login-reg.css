@@ -1,0 +1,240 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	text-decoration: none;
+	list-style: none;
+}
+body{
+	background: url(../img/demo-1-bg.jpg) no-repeat;
+	background-size: cover;
+}
+body .info{
+	background: url(../img/bg-login.jpg);
+	background-size: cover;
+}
+.login .wrap{
+	width: 300px;
+	height: 300px;
+	margin: 150px auto;
+}
+.login .span{
+	width: 300px;
+	color: white;
+	text-align: center;
+	font-size: 18px;
+	opacity: 0.8;
+}
+.login input{
+	width: 260px;
+	height: 40px;
+	/*margin: 10px 20px;*/
+	margin-top: 10px;
+	margin-left: 20px;
+	border: none;
+	border-radius: 5px;
+	padding-left: 10px;
+	
+}
+.login .yzm{
+	width: 130px;
+}
+.login .yzm1{
+	color: white;
+	float: right;
+	width: 125px;
+	height: 40px;
+	border: 1px solid white;
+	border-radius: 5px;
+	position: relative;
+	top: 10px;
+	left: -20px;
+	line-height: 40px;
+	font-size: 20px;
+	padding-left: 20px;
+}
+.login #Tip{
+	float: left;
+	/*border: 1px solid white;*/
+	border-radius:5px ;
+	width: 130px;
+	height: 20px;
+	margin-left: 20px;
+	color: red;
+	text-align: center;
+	/*display: none;*/
+}
+.login .change{
+	float: left;
+	width: 125px;
+	height: 20px;
+}
+.login .change a{
+	margin-left: 170px;
+	text-decoration: none;
+	color: white;
+	opacity: 0.8;
+	position: absolute;
+	left: 30px;
+	}
+.login .btn{
+	width: 260px;
+	height: 40px;
+	margin: 10px 20px;
+	border: none;
+	background-color: lightskyblue;
+	border-radius: 5px;
+}
+.login .tip{
+	width: 260px;
+	height: 16px;
+	line-height:16px;
+	font-size:14px;
+	margin-left: 20px;
+	border-radius: 5px;
+	color: red;
+	padding-left: 20px;
+	position: relative;
+	margin-top:10px;
+
+}
+.login .forget a{
+	margin-left: 200px;
+	text-decoration: none;
+	color: white;
+	opacity: 0.8;
+}
+.login .forget a:hover{
+	opacity: 1;
+}
+
+
+
+
+/*个人信息页面CSS*/
+.info .red {
+	color:red;
+}
+.info .container h2{
+	text-align: center;
+	margin:20px auto;
+	color:#fff;
+}
+.info .container label{
+	color:white;
+}
+.info #ehong-code-input {
+	width:42px;
+	letter-spacing:2px;
+	margin:0px 8px 0px 0px;
+}
+.info .ehong-idcode-val {
+	position:relative;
+	padding:1px 4px 1px 4px;
+	top:0px;
+	*top:-3px;
+	letter-spacing:4px;
+	display:inline;
+	cursor:pointer;
+	font-size:16px;
+	font-family:"Courier New",Courier,monospace;
+	text-decoration:none;
+	font-weight:bold;
+}
+.info .ehong-idcode-val0 {
+	border:solid 1px #A4CDED;
+	background-color:#ECFAFB;
+}
+.info .ehong-idcode-val1 {
+	border:solid 1px #A4CDED;
+	background-color:#FCEFCF;
+}
+.info .ehong-idcode-val2 {
+	border:solid 1px #6C9;
+	background-color:#D0F0DF;
+}
+.info .ehong-idcode-val3 {
+	border:solid 1px #6C9;
+	background-color:#DCDDD8;
+}
+.info .ehong-idcode-val4 {
+	border:solid 1px #6C9;
+	background-color:#F1DEFF;
+}
+.info .ehong-idcode-val5 {
+	border:solid 1px #6C9;
+	background-color:#ACE1F1;
+}
+.info .ehong-code-val-tip {
+	font-size:12px;
+	color:#1098EC;
+	top:0px;
+	*top:-3px;
+	position:relative;
+	margin:0px 0px 0px 4px;
+	cursor:pointer;
+}
+.info #reset{
+	background: #f89051;
+}
+.info #sex{
+	line-height: 30px;
+	margin:0px auto;
+	border:1px solid lightgray;
+	border-radius: 5px;
+	background: #fff;
+
+}
+.info #sex input{
+	margin-left: 30px;
+}
+.info select{
+	height: 30px;
+	border-radius: 5px;
+}
+.tip{
+	color:red;
+}
+.regist .wrap{
+	width: 300px;
+	height: 300px;
+	margin: 150px auto;
+}
+.regist .span{
+	width: 300px;
+	color: white;
+	text-align: center;
+	font-size: 18px;
+	opacity: 0.8;
+}
+.regist input{
+	width: 260px;
+	height: 40px;
+	/*margin: 10px 20px;*/
+	margin-top: 10px;
+	margin-left: 20px;
+	border: none;
+	border-radius: 5px;
+	padding-left: 10px;
+	
+}
+.regist .btn{
+	width: 260px;
+	height: 40px;
+	margin: 10px 20px;
+	border: none;
+	background-color: lightskyblue;
+	border-radius: 5px;
+}
+.regist .tip{
+	width: 260px;
+	height: 16px;
+	line-height:16px;
+	font-size:14px;
+	margin-left: 20px;
+	border-radius: 5px;
+	color: red;
+	padding-left: 20px;
+	position: relative;
+	margin-top:10px;
+
+}
