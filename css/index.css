@@ -28,7 +28,8 @@ nav div:nth-child(1){
     width: 100%;
     padding: 200px 0;
     height: 650px;
-    background: url("../img/bg4.jpg");
+    background: url("../img/bg4.jpg") no-repeat;
+    background-size: cover
 }
 h1,.bg h2{
     line-height: 50px;
