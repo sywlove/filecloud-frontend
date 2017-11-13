@@ -1,3 +1,9 @@
+if(window.localStorage.getItem("register")){
+    var Register =  window.localStorage.getItem("register");
+    var SE = JSON.parse(Register).email;
+    $("#dLabel").text(SE);
+}
+
 if (window.localStorage.getItem('Type')) {
     var Stype = window.localStorage.getItem('Type');
     var SType = JSON.parse(Stype).type;
