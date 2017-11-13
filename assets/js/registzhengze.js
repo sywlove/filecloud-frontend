@@ -78,7 +78,7 @@
 				}
 			}
 			if(flag==3){
-				location.href = "changeheadimg.html";
+				location.href = "../../changeheadimg.html";
 			}
 	})
 
