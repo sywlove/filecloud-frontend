@@ -77,11 +77,11 @@ function Toggle(){
     var btnToggle = document.getElementById('buttonPlayAndPause');
     if(flag===false){
         play();
-        btnToggle.style.backgroundImage='url(img/jtbq_013.png)';
+        btnToggle.style.backgroundImage='url(assets/img/jtbq_013.png)';
         flag=true;
     }else{
         pause();
-        btnToggle.style.backgroundImage='url(img/jtbq_014.png)';
+        btnToggle.style.backgroundImage='url(assets/img/jtbq_014.png)';
         flag=false;
     }
 }

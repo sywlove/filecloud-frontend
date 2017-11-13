@@ -4,7 +4,7 @@ $(window).scroll(function () {
         $(".til").css({
             "background": "#fdfdfd"
         });
-        $(".til img").attr("src", "img/cloud_.png");
+        $(".til img").attr("src", "assets/img/cloud_.png");
         $(".til span").css({
             "color": "#8a8a8a"
         });
@@ -20,7 +20,7 @@ $(window).scroll(function () {
         $(".til").css({
             "background": "transparent"
         });
-        $(".til img").attr("src", "img/cloud.png");
+        $(".til img").attr("src", "assets/img/cloud.png");
         $(".til span").css({
             "color": "#fff"
         });
@@ -42,7 +42,7 @@ $(window).scroll(function () {
 });
 $(".file ul li").on("click", function () {
     var fileName = $(this).children("p").children("span").html();
-    $.getJSON("json/file.json", function (data) {
+    $.getJSON("data/json/file.json", function (data) {
         for (var i = 0; i < data.length; i++) {
             if (data[i].name == fileName) {
                 window.localStorage.setItem('file', JSON.stringify(data[i]));
@@ -53,7 +53,7 @@ $(".file ul li").on("click", function () {
 });
 $(".hot ul li").on("click", function () {
     var fileName = $(this).children("a").children("p").children("span:eq(1)").html();
-    $.getJSON("json/file.json", function (data) {
+    $.getJSON("data/json/file.json", function (data) {
         for (var i = 0; i < data.length; i++) {
             if (data[i].name == fileName) {
                 window.localStorage.setItem('file', JSON.stringify(data[i]));
@@ -71,7 +71,7 @@ $(".more").on("click", function () {
     $(location).attr("href", "show.html");
 });
 
-$.getJSON("json/file.json", function (data) {
+$.getJSON("data/json/file.json", function (data) {
     for (var j = 0; j < 12; j++) {
         $("div.file ul li:eq(" + j + ") p span").html(data[j]["name"]);
     }
